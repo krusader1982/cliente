@@ -4,6 +4,7 @@ import TabelaFilter from './components/Tabelas/TabelaFilter';
 import Home from './components/Home/Home';
 
 import './App.css';
+import Pagination from './components/Pagination/Pagination';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path="/tabela_filter" element={<TabelaFilter />} />
+      </Routes>
+      <Routes>
+        <Route path="/pagination" element={<Pagination />} />
       </Routes>
     </BrowserRouter>
 
