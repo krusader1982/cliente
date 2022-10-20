@@ -5,18 +5,12 @@ import "./Pagination.css"
 
 const Pagination = () => {
     return (
-        <div>
-            <div className="body">
-                <div className='image-container'>
-                    <h1><CgProfile /></h1>
-                    <h1><CgProfile /></h1>
-                </div>
-                <div className='image-container'>
-                    <h1><CgProfile /></h1>
-                    <h1><CgProfile /></h1>
-                </div>
-            </div>
-            <div>
+        <div className='container__pag'>
+            <div className='image-container'>
+                <h1><CgProfile />usuario 1</h1>
+                <h1><CgProfile />usuario 2</h1>
+                <h1><CgProfile />usuario 3</h1>
+                <h1><CgProfile />usuario 4</h1>
                 <h1 className='link'>https://www.youtube.com/watch?v=voXTVTW73E8</h1>
             </div>
         </div>

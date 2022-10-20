@@ -1,0 +1,22 @@
+.container__pag {
+    background: #f34646;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 100px 100px;
+    grid-gap: 3px;
+    justify-content: space-between;
+    align-content: space-between;
+    
+}
+
+.image-container{     
+    display: grid;    
+    border: rgb(29, 28, 28) solid 2px;
+    border: rgb(29, 28, 28) solid 2px;
+    padding: 3px;
+    margin: 5px;
+    display: flex;
+}
+
