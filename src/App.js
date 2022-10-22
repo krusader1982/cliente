@@ -1,49 +1,55 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Tabela from './components/Tabela';
-import TabelaFilter from './components/Tabelas/TabelaFilter';
-import Home from './components/Home/Home';
-
-import './App.css';
-import Pagination from './components/Pagination/Pagination';
+import { useState } from "react";
+import FormAccount from "./components/Form/FormAccount";
+import FormAddress from "./components/Form/FormAddress";
+import FormPersonalDetails from "./components/Form/FormPersonalDetails";
+import * as C from "@chakra-ui/react";
+import Step from "./components/Form/Step";
 
 function App() {
+  const [step, setStep] = useState(1);
+
+  const getCompStep = () => {
+    switch (step) {
+      case 1:
+        return <FormAccount />;
+      case 2:
+        return <FormPersonalDetails />;
+      case 3:
+        return <FormAddress />;
+      default:
+        return <FormAccount />;
+    }
+  };
+
+  const Steps = [1, 2, 3];
+
   return (
-    <div className='container'>
-      <header>
-        <div>Home</div>
-        <div>Login</div>
-      </header>
-      <aside> 
-        <ul>
-          <li>Alunos</li>
-          <li>Cadastrar Alunos</li>
-          <li>Configurações</li>
-        </ul>
-      </aside>
-      <main>
-      
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Routes>
-          <Route path="/tabela_simples" element={<Tabela />} />
-        </Routes>
-        <Routes>
-          <Route path="/tabela_filter" element={<TabelaFilter />} />
-        </Routes>
-        <Routes>
-          <Route path="/pagination" element={<Pagination />} />
-        </Routes>      
-      </BrowserRouter>
-      </main>
-      <footer>
-        <div>Vamos ver o que acontece por aqui!!</div>
-      </footer>
-    </div>
+    <C.Flex h="100vh" align="center" justify="center">
+      <C.Center maxW={500} w="100%" py={10} px={2} flexDir="column">
+        <C.HStack spacing={4}>
+          {Steps.map((item) => (
+            <Step key={item} index={item} active={step === item} />
+          ))}
+        </C.HStack>
 
+        <C.Divider my={4} borderColor="blackAlpha.700" />
 
-  )
+        <C.Box w="80%">{getCompStep()}</C.Box>
+
+        <C.HStack spacing={10} mt={4}>
+          <C.Button onClick={() => setStep(step - 1)} disabled={step === 1}>
+            Voltar
+          </C.Button>
+          <C.Button
+            colorScheme="blue"
+            onClick={() => step !== 3 && setStep(step + 1)}
+          >
+            {step === 3 ? "Enviar" : "Próximo"}
+          </C.Button>
+        </C.HStack>
+      </C.Center>
+    </C.Flex>
+  );
 }
 
 export default App;
